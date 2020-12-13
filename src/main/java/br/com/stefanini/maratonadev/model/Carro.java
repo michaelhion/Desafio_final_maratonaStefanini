@@ -1,14 +1,10 @@
 package br.com.stefanini.maratonadev.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -20,15 +16,20 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
  */
 @Entity
 @Table(name = "carro")
+@NamedNativeQueries({
+	@NamedNativeQuery(name="INSERIR_CLIENTE", query= "INSERT INTO carro (cliente)"
+			+" SELECT cpf= :cpf, nome = :nome, endereco = :endereco, email = :email, celular = :celular, telefone = :telefone"
+			+ " WHERE placa = :placa AND cpf = :cpf"),
+})
 public class Carro extends PanacheEntityBase {
 
-	@ManyToMany
-	@JoinTable(name = "aluga", joinColumns = { @JoinColumn(name = "carro_placa") }, inverseJoinColumns = {
-			@JoinColumn(name = "cliente_cpf") })
-	private List<Cliente>cliente;
+//	@ManyToMany
+//	@JoinTable(name = "aluga", joinColumns = { @JoinColumn(name = "carro_placa") }, inverseJoinColumns = {
+//			@JoinColumn(name = "cliente_cpf") })
+//	private List<Cliente>cliente;
 	
-	@OneToMany(mappedBy = "carro")
-	private List<Aluga> aluga;
+//	@OneToMany(mappedBy = "carro")
+//	private List<Aluga> aluga;
 	@Id
 	private String placa;
 
@@ -83,21 +84,21 @@ public class Carro extends PanacheEntityBase {
 
 	
 
-	public List<Cliente> getCliente() {
-		return cliente;
-	}
+//	public List<Cliente> getCliente() {
+//		return cliente;
+//	}
+//
+//	public void setCliente(List<Cliente> cliente) {
+//		this.cliente = cliente;
+//	}
 
-	public void setCliente(List<Cliente> cliente) {
-		this.cliente = cliente;
-	}
-
-	public List<Aluga> getAluga() {
-		return aluga;
-	}
-
-	public void setAluga(List<Aluga> aluga) {
-		this.aluga = aluga;
-	}
+//	public List<Aluga> getAluga() {
+//		return aluga;
+//	}
+//
+//	public void setAluga(List<Aluga> aluga) {
+//		this.aluga = aluga;
+//	}
 
 	
 }

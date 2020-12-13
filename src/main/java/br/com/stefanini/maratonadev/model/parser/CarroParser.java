@@ -10,17 +10,28 @@ import br.com.stefanini.maratonadev.model.Carro;
  */
 public class CarroParser {
 
-    public static CarroParser get(){
-        return  new CarroParser();
-    }
+	public static CarroParser get() {
+		return new CarroParser();
+	}
 
-    public CarroDto dto(Carro entidade){
-        CarroDto dto = new CarroDto();
+	public CarroDto dto(Carro entidade) {
+		CarroDto dto = new CarroDto();
 
-        dto.setPlaca(entidade.getPlaca());
-        dto.setAno(entidade.getAno());
-        dto.setModelo(entidade.getModelo());
-        dto.setMarca(entidade.getMarca());
-        return dto;
-    }
+		dto.setPlaca(entidade.getPlaca());
+		dto.setAno(entidade.getAno());
+		dto.setModelo(entidade.getModelo());
+		dto.setMarca(entidade.getMarca());
+		return dto;
+	}
+
+	public Carro entidade(CarroDto dto) {
+		Carro entidade = new Carro();
+
+		entidade.setPlaca(dto.getPlaca());
+		entidade.setAno(dto.getAno());
+		entidade.setModelo(dto.getModelo());
+		entidade.setMarca(dto.getMarca());
+		
+		return entidade;
+	}
 }

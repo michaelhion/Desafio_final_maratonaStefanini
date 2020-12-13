@@ -21,7 +21,8 @@ public class ClienteService {
 	EntityManager em;
 	
 	@Inject
-	AlugaService serv;
+//	AlugaService serv;
+	CarroService serv;
 
 	public List<ClienteDto> listarCliente() {
 		return dao.listarClientes().stream().map(ClienteParser.get()::dto).collect(Collectors.toList());

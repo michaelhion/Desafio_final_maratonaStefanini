@@ -11,8 +11,8 @@ public class AlugaParser {
 	public AlugaDto dto(Aluga entidade) {
 		AlugaDto dto = new AlugaDto();
 		
-		dto.setCarro(entidade.getCarro());
-		dto.setCliente(entidade.getCliente());
+		dto.setCarro_placa(entidade.getCarro_placa());
+		dto.setCliente_cpf(entidade.getCliente_cpf());
 		dto.setData(entidade.getData());
 		dto.setId(entidade.getId());
 		
@@ -22,8 +22,8 @@ public class AlugaParser {
 	public Aluga entidade(AlugaDto dto) {
 		Aluga entidade = new Aluga();
 		
-		entidade.setCarro(dto.getCarro());
-		entidade.setCliente(dto.getCliente());
+		entidade.setCarro_placa(dto.getCarro_placa());
+		entidade.setCliente_cpf(dto.getCliente_cpf());
 		entidade.setData(dto.getData());
 		entidade.setId(dto.getId());
 		

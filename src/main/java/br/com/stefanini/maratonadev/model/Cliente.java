@@ -1,14 +1,10 @@
 package br.com.stefanini.maratonadev.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
@@ -22,11 +18,11 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 })
 public class Cliente extends PanacheEntityBase{
 	
-	@ManyToMany(mappedBy = "cliente")
-	private List<Carro> carro;
+//	@ManyToMany(mappedBy = "cliente")
+//	private List<Carro> carro;
 	
-	@OneToOne(mappedBy = "cliente")
-	private Aluga aluga;
+//	@OneToMany(mappedBy = "cliente")
+//	private List<Aluga> aluga;
 	
 	@Id
 	private Long cpf;
@@ -103,21 +99,21 @@ public class Cliente extends PanacheEntityBase{
 
 	
 
-	public List<Carro> getCarro() {
-		return carro;
-	}
+//	public List<Carro> getCarro() {
+//		return carro;
+//	}
+//
+//	public void setCarro(List<Carro> carro) {
+//		this.carro = carro;
+//	}
 
-	public void setCarro(List<Carro> carro) {
-		this.carro = carro;
-	}
-
-	public Aluga getAluga() {
-		return aluga;
-	}
-
-	public void setAluga(Aluga aluga) {
-		this.aluga = aluga;
-	}
+//	public List<Aluga> getAluga() {
+//		return aluga;
+//	}
+//
+//	public void setAluga(List<Aluga> aluga) {
+//		this.aluga = aluga;
+//	}
 	
 	
 }

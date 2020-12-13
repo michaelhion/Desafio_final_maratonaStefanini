@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import br.com.stefanini.maratonadev.dao.CarroDao;
 import br.com.stefanini.maratonadev.dto.CarroDto;
+import br.com.stefanini.maratonadev.model.Carro;
 import br.com.stefanini.maratonadev.model.parser.CarroParser;
 
 /**
@@ -19,9 +20,41 @@ import br.com.stefanini.maratonadev.model.parser.CarroParser;
 public class CarroService {
     @Inject
     CarroDao dao;
-
+    
+    @Inject
+    ClienteService serv;
 
     public List<CarroDto> listar(){
         return dao.listar().stream().map(CarroParser.get()::dto).collect(Collectors.toList());
+    }
+    
+//    public void inserirCliente(Long cpf) {
+//    	Cliente cliente = serv.buscarPorId(cpf);
+//    	
+//    }
+    
+//    @Transactional(rollbackOn = Exception.class)
+//	public void editar(Long cpf, String placa, CarroDto dto) {
+//		Carro carro = CarroParser
+//				.get()
+//				.entidade(dto);
+//		Carro carroBanco = buscarPorPlaca(placa);
+//		Carro carroCliente = buscarCliente(cpf);
+//		carroBanco.setCliente(carro.getCliente());
+//		
+//		
+//		dao.editarCliente(carroBanco, placa, cpf);
+//	}
+    
+    public Carro buscarPorPlaca(String placa) {
+    	Carro carro = dao.buscarPorPlaca(placa);
+    	
+    	return carro;
+    }
+    
+    public Carro buscarCliente(Long cpf) {
+    	Carro carro = dao.buscarClientePorCpf(cpf);
+    	
+    	return carro;
     }
 }

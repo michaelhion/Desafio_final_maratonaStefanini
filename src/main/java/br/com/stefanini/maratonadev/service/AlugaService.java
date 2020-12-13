@@ -25,8 +25,8 @@ public class AlugaService {
 	}
 	
 	@Transactional(rollbackOn = Exception.class)
-	public void inserir(AlugaDto dto) {
-		Aluga aluga = AlugaParser.get().entidade(dto);
+	public void inserir(Aluga aluga) {
+		//Aluga aluga = AlugaParser.get().entidade(dto);
 		dao.inserirAluguel(aluga);
 	}
 	
@@ -37,7 +37,7 @@ public class AlugaService {
 		dao.excluir(id);
 	}
 	
-	@Transactional
+	/*@Transactional
 	public void editar(Long id, AlugaDto dto) {
 		Aluga aluga = AlugaParser
 				.get()
@@ -49,7 +49,7 @@ public class AlugaService {
 		alugaBanco.setId(aluga.getId());
 		
 		dao.editar(alugaBanco);
-	}
+	}*/
 	
 	public Aluga buscarPorId(Long id) {
 		Aluga aluga = dao.buscarPorId(id);

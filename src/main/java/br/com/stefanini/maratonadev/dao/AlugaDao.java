@@ -3,6 +3,7 @@ package br.com.stefanini.maratonadev.dao;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -15,6 +16,13 @@ import io.quarkus.panache.common.Sort;
 public class AlugaDao {
 	@PersistenceContext
 	EntityManager em;
+	
+	@Inject
+	CarroDao carDao;
+	
+	@Inject
+	ClienteDao cliDao;
+	
 
 	public List<Aluga> listarAluguel() {
 		return Aluga.listAll(Sort.by("data").descending());
@@ -30,8 +38,17 @@ public class AlugaDao {
 	}
 
 	@Transactional
-	public void inserirAluguel(Aluga aluguel) {
-		aluguel.persistAndFlush();
+	public void inserirAluguel(Aluga aluga) {
+		aluga.persistAndFlush();
+//		String sql = "INSERIR_ALUGUEL";
+//		Query query = em.createNamedQuery(sql);
+//		
+//		query.setParameter("id", aluga.getId());
+//		query.setParameter("data", aluga.getData());
+//		query.setParameter("cpf", aluga.getCliente());
+//		query.setParameter("placa", aluga.getCarro());
+//		
+//		query.executeUpdate();
 	}
 
 	@Transactional
@@ -40,9 +57,10 @@ public class AlugaDao {
 		Query query = em.createNamedQuery(sql);
 
 		query.setParameter("id", aluga.getId());
-		query.setParameter("cliente", aluga.getCliente());
-		query.setParameter("carro", aluga.getCarro());
+		query.setParameter("cliente_cpf", aluga.getCliente_cpf());
+		query.setParameter("carro_placa", aluga.getCarro_placa());
 		query.setParameter("data", aluga.getData());
+		query.setParameter("status", aluga.getStatus());
 		
 		query.executeUpdate();
 	}

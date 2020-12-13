@@ -4,21 +4,16 @@ import java.time.LocalDateTime;
 
 import javax.json.bind.annotation.JsonbDateFormat;
 
-import br.com.stefanini.maratonadev.model.Carro;
-import br.com.stefanini.maratonadev.model.Cliente;
-
 public class AlugaDto {
 	private Long id;
 	
 	@JsonbDateFormat("dd/MM/yyyy HH:mm")
 	private LocalDateTime data;
 	
-	private Cliente cliente;
+	private Long cliente_cpf;
+	
+	private String carro_placa;
 
-	private Carro carro;
-	
-	private String status;
-	
 	public Long getId() {
 		return id;
 	}
@@ -35,28 +30,20 @@ public class AlugaDto {
 		this.data = data;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Long getCliente_cpf() {
+		return cliente_cpf;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setCliente_cpf(Long cliente_cpf) {
+		this.cliente_cpf = cliente_cpf;
 	}
 
-	public Carro getCarro() {
-		return carro;
+	public String getCarro_placa() {
+		return carro_placa;
 	}
 
-	public void setCarro(Carro carro) {
-		this.carro = carro;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setCarro_placa(String carro_placa) {
+		this.carro_placa = carro_placa;
 	}
 
 	

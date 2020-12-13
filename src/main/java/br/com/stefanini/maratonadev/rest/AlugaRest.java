@@ -19,6 +19,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import br.com.stefanini.maratonadev.dto.AlugaDto;
+import br.com.stefanini.maratonadev.model.Aluga;
 import br.com.stefanini.maratonadev.service.AlugaService;
 
 @Path("aluga")
@@ -37,11 +38,12 @@ public class AlugaRest {
 	}
 	
 	@POST
+	@Path("/aluga")
 	@Operation(summary = "Adicionar aluguel", description = "Inclusao de novo aluguel")
 	@APIResponse(responseCode = "201", description = "aluga", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = AlugaDto.class)) })
-	public Response incluir(AlugaDto dto) {
-		service.inserir(dto);
+	public Response incluir(Aluga aluga) {
+		service.inserir(aluga);
 		
 		return Response.status(Response.Status.CREATED).build();
 	}
@@ -80,7 +82,7 @@ public class AlugaRest {
 				.build();
 	}
 	
-	@PUT
+	/*@PUT
 	@Path("/{id}")
 	@Operation(summary = "Editar um aluguel com base no ID",
 	description = "Editar um aluguel com base no ID")
@@ -97,5 +99,5 @@ public class AlugaRest {
 		return Response
 				.status(Response.Status.OK).entity(dto)
 				.build();
-	}
+	}*/
 }

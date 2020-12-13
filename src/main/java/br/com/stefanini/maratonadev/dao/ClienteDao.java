@@ -46,7 +46,7 @@ public class ClienteDao {
 		query.setParameter("celular", cliente.getCelular());
 		query.setParameter("telefone", cliente.getTelefone());
 		query.setParameter("aluga", cliente.getAluga());
-		query.setParameter("carro", cliente.getCarro());
+//		query.setParameter("carro", cliente.getCarro());
 		
 		query.executeUpdate();
 	}
